@@ -7,4 +7,5 @@
     <!-- Change the following strings as required -->
     <string name="back4app_app_id">bhqNhgtdnC3AAabJLxHY6cIBdD2R1kVUh5E8fbof</string>
     <string name="back4app_client_key">TBJIMjHOsVvLqydYSmCz2VoEDsIKs5LRCNn0HiDp</string>
+    <string name="title_activity_passenger">Passenger</string>
 </resources>
