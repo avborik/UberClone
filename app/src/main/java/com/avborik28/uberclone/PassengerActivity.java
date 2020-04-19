@@ -26,6 +26,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.parse.DeleteCallback;
 import com.parse.FindCallback;
+import com.parse.LogOutCallback;
 import com.parse.ParseException;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
@@ -43,6 +44,7 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
     private Button btnRequestCar;
     private Button btnBeepBeep;
     private Button btnbtnLogoutFromPassengerActivity;
+    private Button btnLogoutFromPassengerActivity;
     private boolean isUberCancelled = true;
 
     @Override
@@ -58,6 +60,7 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
         btnBeepBeep = findViewById(R.id.btnBeepBeep);
         btnbtnLogoutFromPassengerActivity = findViewById(R.id.btnLogoutFromPassengerActivity);
 
+
         btnRequestCar.setOnClickListener(this);
 
         ParseQuery<ParseObject> carRequestQuery = ParseQuery.getQuery("RequestCar");
@@ -69,6 +72,21 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
                     isUberCancelled = false;
                     btnRequestCar.setText("Cancel the uber request");
                 }
+            }
+        });
+
+        findViewById(R.id.btnLogoutFromPassengerActivity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ParseUser.logOutInBackground(new LogOutCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if(e == null){
+                            finish();
+                        }
+                    }
+                });
+
             }
         });
     }
